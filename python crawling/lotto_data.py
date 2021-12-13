@@ -5,7 +5,7 @@ from firebase_admin import firestore
 import requests
 from bs4 import BeautifulSoup
 # Use a service account
-cred = credentials.Certificate('C:/Users/user/Desktop/2_C/finalTest/final-test-1e46c-firebase-adminsdk-vsvki-cf6ba11fee.json')
+cred = credentials.Certificate('(firebase key).json')
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
