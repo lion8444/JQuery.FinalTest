@@ -24,17 +24,22 @@
 
         firebase.initializeApp(firebaseConfig);
     </script>
-    <script>
+    <!-- <script>
         const db = firebase.firestore();
         db.collection('lotto').get().then((query) => {
             query.forEach((doc) => {
                 var round = `${doc.id}`;
                 var win_num = doc.data().win_num;
                 var bonus = doc.data().bonus;
-                $('.list').append(round + "당첨번호 : " + win_num + " 보너스 번호 : " + bonus);
+                var newLi = document.createElement("<li>");​
+                newLi.innerHTML = "test";
+
+                $('.list').appendChild(newLi);
+                // ul.appendChild(newLi);
+                // $('.list').append(round + " 당첨번호 : " + win_num + " 보너스 번호 : " + bonus+"<br>");
             })
         })
-    </script>
+    </script> -->
 
     <style type="css/text">
         ul.mylist li, ol.mylist li {
@@ -46,7 +51,7 @@
     </style>
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="lotto_test.html">나도 인생역전</a>
+            <a class="navbar-brand" href="index.html">나도 인생역전</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -59,7 +64,7 @@
                   <a class="nav-link" href="lotto_display.html">회차별 당첨번호</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">복권번호 추천</a>
+                  <a class="nav-link" href="lotto_recommend.html">복권번호 추천</a>
                 </li>
               </ul>
             </div>
@@ -70,8 +75,25 @@
 </head>
 
 <body>
+  <script>
+    const db = firebase.firestore();
+    db.collection('lotto').get().then((query) => {
+        query.forEach((doc) => {
+            var round = `${doc.id}`;
+            var win_num = doc.data().win_num;
+            var bonus = doc.data().bonus;
+
+            $('.list').append(round + " 당첨번호 : " + win_num + " 보너스 번호 : " + bonus+"<br>");
+        })
+    })
+</script>
+<form action="/examples/media/action_target.php" method="get">
+  검색 <input type="search" name="q">
+  <input type="submit">
+</form>
     <ul>
-        <li class="list"></li>
+      <li class="list"></li>
+        
     </ul>
 
 </body>
